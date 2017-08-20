@@ -4,9 +4,13 @@ var _express = require('express');
 
 var _express2 = _interopRequireDefault(_express);
 
-var _routes = require('./routes');
+var _publicRoutes = require('./publicRoutes');
 
-var _routes2 = _interopRequireDefault(_routes);
+var _publicRoutes2 = _interopRequireDefault(_publicRoutes);
+
+var _secureRoutes = require('./secureRoutes');
+
+var _secureRoutes2 = _interopRequireDefault(_secureRoutes);
 
 var _path = require('path');
 
@@ -19,6 +23,8 @@ var _crypto2 = _interopRequireDefault(_crypto);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var app = (0, _express2.default)();
+
+(0, _publicRoutes2.default)(app);
 
 app.use(function (req, res, next) {
   var auth = req.header('Authorization');
@@ -41,8 +47,10 @@ app.use(function (req, res, next) {
 
 app.use('/images', _express2.default.static(_path2.default.join('./images')));
 
-(0, _routes2.default)(app);
+(0, _secureRoutes2.default)(app);
 
-app.listen(3000, function () {
-  console.log('Listening on port 3000');
+var port = process.env.PORT || 3000;
+
+app.listen(port, function () {
+  console.log('Listening on port: ' + port);
 });
