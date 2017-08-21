@@ -26,6 +26,8 @@ var app = (0, _express2.default)();
 
 (0, _publicRoutes2.default)(app);
 
+app.use('/images', _express2.default.static(_path2.default.join('./images')));
+
 app.use(function (req, res, next) {
   var auth = req.header('Authorization');
 
@@ -44,8 +46,6 @@ app.use(function (req, res, next) {
     return;
   }
 });
-
-app.use('/images', _express2.default.static(_path2.default.join('./images')));
 
 (0, _secureRoutes2.default)(app);
 

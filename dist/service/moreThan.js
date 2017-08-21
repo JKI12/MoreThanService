@@ -98,9 +98,9 @@ var getMileage = function getMileage(body) {
   var milesExcess = document.getElementById('ctl00_MainContent_PredictedExcessLabel').innerHTML;
 
   return {
-    used: milesUsed,
-    remain: milesRemain,
-    excess: milesExcess
+    used: milesUsed.replace(',', ''),
+    remain: milesRemain.replace(',', ''),
+    excess: milesExcess.replace(',', '')
   };
 };
 
