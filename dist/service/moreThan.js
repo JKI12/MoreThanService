@@ -327,7 +327,9 @@ var login = exports.login = function login() {
       } else {
         console.log('logged in');
         setTimeout(function () {
+          console.log('cleared cookies');
           jar = _request2.default.jar();
+          request = _request2.default.defaults({ jar: jar });
         }, timeoutTime);
         resolve();
       }
