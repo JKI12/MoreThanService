@@ -44,6 +44,8 @@ var request = _request2.default.defaults({ jar: jar });
 var JSDOM = _jsdom2.default.JSDOM;
 
 
+var timeoutTime = 1800000;
+
 var getDashboard = function getDashboard() {
   var url = baseUrl + '/MyDashboard.aspx';
 
@@ -324,6 +326,9 @@ var login = exports.login = function login() {
         reject(error);
       } else {
         console.log('logged in');
+        setTimeout(function () {
+          jar = _request2.default.jar();
+        }, timeoutTime);
         resolve();
       }
     });
