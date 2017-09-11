@@ -47,6 +47,7 @@ var JSDOM = _jsdom2.default.JSDOM;
 var timeoutTime = 1800000;
 
 var getDashboard = function getDashboard() {
+  console.log('Getting Dash');
   var url = baseUrl + '/MyDashboard.aspx';
 
   return new _promise2.default(function (resolve, reject) {
@@ -88,6 +89,8 @@ var getDashboard = function getDashboard() {
 };
 
 var getMileage = function getMileage(body) {
+  console.log('Getting Mileage');
+
   var _ref2 = new JSDOM(body),
       window = _ref2.window;
 
@@ -105,6 +108,8 @@ var getMileage = function getMileage(body) {
 };
 
 var getOverallImage = function getOverallImage(body) {
+  console.log('Getting Overall Image');
+
   var _ref3 = new JSDOM(body),
       window = _ref3.window;
 
@@ -124,6 +129,8 @@ var getOverallImage = function getOverallImage(body) {
 };
 
 var getDetailedView = function getDetailedView() {
+  console.log('Getting Detailed View');
+
   var url = baseUrl + '/MyDrivingHistoryMoreDetails.aspx';
 
   return new _promise2.default(function (resolve, reject) {
@@ -148,6 +155,8 @@ var getDetailedView = function getDetailedView() {
 };
 
 var getDials = function getDials(body) {
+  console.log('Getting Dials');
+
   var _ref4 = new JSDOM(body),
       window = _ref4.window;
 
@@ -187,6 +196,8 @@ var getDials = function getDials(body) {
 };
 
 var getJourneys = function getJourneys(body) {
+  console.log('Getting Journeys');
+
   var _ref5 = new JSDOM(body),
       window = _ref5.window;
 
@@ -286,6 +297,8 @@ var getData = exports.getData = function () {
 }();
 
 var login = exports.login = function login() {
+  console.log('logging in');
+
   var url = baseUrl + '/Default.aspx';
 
   var options = {
@@ -323,6 +336,7 @@ var login = exports.login = function login() {
   return new _promise2.default(function (resolve, reject) {
     request(options, function (error, response, body) {
       if (error) {
+        console.log('Error logging in: ' + error);
         reject(error);
       } else {
         console.log('logged in');
